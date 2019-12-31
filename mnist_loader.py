@@ -39,9 +39,11 @@ def load_data():
     That's done in the wrapper function ``load_data_wrapper()``, see
     below.
     """
-    f = gzip.open('data/mnist.pkl.gz', 'rb')
-    training_data, validation_data, test_data = pickle.load(f)
-    f.close()
+   
+    with gzip.open('data/mnist.pkl.gz', 'rb') as f:
+        u = pickle._Unpickler(f)
+        u.encoding = 'latin1'
+        training_data, validation_data, test_data = u.load()
     return (training_data, validation_data, test_data)
 
 def load_data_wrapper():
