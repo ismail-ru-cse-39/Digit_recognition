@@ -24,12 +24,15 @@ class Network(object):
         
         return a
     
-    def SGD(self, training_data, epochs, mini_batch_size, eta, test_data = None):
+    def SGD(self, training_data, epochs, mini_batch_size, eta, test_data=None):
         """Train the neural network using mini_batch_stochastic gradient descent"""
         
-        if test_data: n_test = len(list(test_data))
+        if test_data:
+            test_data = list(test_data)
+            n_test = len(list(test_data))
         training_data = list(training_data)
-        n = len(training_data)
+        n = len(list(training_data))
+       
         for j in range(epochs):
             random.shuffle(training_data)
             mini_batches = [training_data[k:k+mini_batch_size] for k in range(0, n, mini_batch_size)]
@@ -86,7 +89,7 @@ class Network(object):
         return sum(int(x == y) for (x, y) in test_results)
     
     def cost_derivative(self, output_activations, y):
-        return (output_activations - y)
+        return (output_activations-y)
     
 
 def sigmoid(z):
