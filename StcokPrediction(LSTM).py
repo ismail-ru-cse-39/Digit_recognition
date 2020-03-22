@@ -62,4 +62,8 @@ for i in range(60, len(train_data)):
         print(x_train)
         print(y_train)
         print()
+
+#Conver x_train and y_train to numpy array
+x_train = np.array(x_train)
+y_train = np.array(y_train)
         
