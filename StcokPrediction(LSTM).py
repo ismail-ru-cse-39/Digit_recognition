@@ -66,4 +66,8 @@ for i in range(60, len(train_data)):
 #Conver x_train and y_train to numpy array
 x_train = np.array(x_train)
 y_train = np.array(y_train)
+
+#ReShape the data
+x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], 1))
+print(x_train.shape)
         
