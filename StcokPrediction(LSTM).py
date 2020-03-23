@@ -149,14 +149,13 @@ X_test = np.reshape(X_test, (X_test.shape[0], X_test.shape[1], 1))
 pred_price = model.predict(X_test)
 #undo the scaling
 pred_price = scaler.inverse_transform(pred_price)
-print("Our Predit data: ")
 print()
+print("Our Predicted price: ")
 print(pred_price)
-
+print()
 #Get the quote
 apple_quote2 = web.DataReader('AAPL', data_source='yahoo', start='2019-12-18', end='2019-12-18')
-print("Actual data: ")
-print() 
+print("Actual price: ")
 print(apple_quote2['Close'])
 
 
