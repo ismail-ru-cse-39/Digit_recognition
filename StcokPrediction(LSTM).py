@@ -70,4 +70,17 @@ y_train = np.array(y_train)
 #ReShape the data
 x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], 1))
 print(x_train.shape)
+
+#Build the LSTm model
+model = Sequential()
+model.add(LSTM(50,return_sequences=True, input_shape=(x_train.shape[1], 1)))
+model.add(LSTM(50, return_sequences=False))
+model.add(Dense(25))
+model.add(Dense(1))
+
+#Compile the model
+model.compile(optimizer='adam', loss='mean_squared_error')
+
+#Train the model
+model.fit(x_train, y_train, batch_size=1, epochs=1)
         
